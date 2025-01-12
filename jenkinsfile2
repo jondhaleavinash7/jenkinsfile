@@ -14,16 +14,15 @@ pipeline{
     stages{
         stage("Test case A"){
             steps{
+                options {
+                retry(3)
+                timeout(time: 30000, unit: 'SECONDS')
                 echo "this is the parameter ${params.sex}"
                 echo "${IsMale}"
                 echo "${lname}"
                 sh 'this env "${username}"'
                 sh 'this env "${pass}"'
-                echo "this is test case 1 "
-              options {
-                  sh 'ech trying....'
-                  retry(3)
-                  timeout(time: 30000, unit: 'SECONDS'
+                echo1 "this is test case 1 "
                    }
             }
             post{
