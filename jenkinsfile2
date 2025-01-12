@@ -17,8 +17,16 @@ pipeline{
                 echo "this is the parameter ${params.sex}"
                 echo "${IsMale}"
                 echo "${lname}"
-                sh 'this env "${username}"'
-                sh 'this env "${pass}"'
+                sh 'echo "${username}"'
+                sh 'echo "${pass}"'
+              retry(3) {
+                        sh '''
+                        echo hello
+                        echo avi
+                        echo jon
+                        echo Trying....
+                        '''
+                    }
               }
             post{
                 always{
