@@ -19,7 +19,6 @@ pipeline{
                 echo "${lname}"
                 sh 'this env "${username}"'
                 sh 'this env "${pass}"'
-                echo "this is test case 1 "
               }
             post{
                 always{
