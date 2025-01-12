@@ -1,0 +1,107 @@
+pipeline {
+    agent any
+    environment{
+        fname="avinash"
+        lname="jondhale"
+        }
+    parameters{
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+    }
+    stages {
+        stage('test ') {
+            environment{
+                username="avinash123"
+                pass="avinash@1234"
+              }
+            steps {
+                sh 'echo "${username}"'
+                sh 'echo "${pass}"'
+                echo 'Test code '
+                
+            }
+        }
+        stage('build') {
+            steps {
+                 sh 'echo "${username}"'
+                 sh 'echo "${pass}"'
+                 sh 'echo "${lname}"'
+                echo 'build code '
+            }
+        }
+        stage('deploy on prod') {
+            steps {
+                echo 'deploy on production'
+            }
+        }
+        stage('single cmd ') {
+    
+            steps {
+                sh 'date'
+                sh 'pwd'
+                sh 'cal 2024'
+                echo 'deploy on production'
+            }
+        }
+        stage('multiple cmd one stage') {
+            steps {
+                sh '''
+                  date 
+                  pwd 
+                  ls
+                  cal 2025
+                  '''
+                echo 'deploy on production'
+            }
+        }
+        stage('enviroment variable') {
+            steps {
+                sh 'echo "${JOB_NAME}"'
+                sh 'echo "${BUILD_ID}"'
+                sh 'echo "${fname}"'
+                sh 'echo "${lname}"'
+                echo 'environment variable'
+            }
+    }
+     
+    stage('parameter') {
+            steps {
+                echo "Hello ${params.PERSON}"
+                echo "Toggle: ${params.TOGGLE}"
+                echo "Choice: ${params.CHOICE}"
+
+                
+                echo 'parameter stage'
+            }
+        post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+        success { 
+            echo 'success !'
+        }
+        failure { 
+            echo 'failure'
+        }
+    }
+        }
+         stage('deploy on test') {
+            steps {
+                echo 'deploy on'
+            }
+        }
+}
+post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+        success { 
+            echo 'success !'
+        }
+        failure { 
+            echo 'failure'
+        }
+    }
+    
+}
