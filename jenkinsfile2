@@ -21,7 +21,7 @@ pipeline{
                 sh 'this env "${pass}"'
                 echo "this is test case 1 "
               options {
-                  timeout(time: 3, unit: 'SECONDS')
+                  timeout(time: 30, unit: 'SECONDS')
                  retry(3)
                    }
             }
