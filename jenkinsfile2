@@ -14,20 +14,20 @@ pipeline{
     stages{
         stage("Test case A"){
             steps{
-                retry(3)
                 timeout(time: 30000, unit: 'SECONDS')
                 echo "this is the parameter ${params.sex}"
                 echo "${IsMale}"
                 echo "${lname}"
                 sh 'this env "${username}"'
                 sh 'this env "${pass}"'
-                echo1 "this is test case 1 "
+                echo "this is test case 1 "
                 retry(3){
                    echo1 "this is test case 1 "
                    }
                  timeout(time: 30, unit: 'MILLISECONDS'){
-                 sh 'sleep 30'
+                  sh 'sleep 30'
                  }
+}
             post{
                 always{
                     echo "========always========"
