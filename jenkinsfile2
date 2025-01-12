@@ -21,7 +21,7 @@ pipeline{
                 sh 'echo "${pass}"'
               retry(3) {
                         sh '''
-                        echo hello
+                        ech hello
                         echo avi
                         echo jon
                         echo Trying....
