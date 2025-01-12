@@ -102,6 +102,5 @@ post {
         failure { 
             echo 'failure'
         }
-    }
-    
+    }    
 }
