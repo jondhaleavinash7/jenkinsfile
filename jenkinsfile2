@@ -21,13 +21,7 @@ pipeline{
                 sh 'this env "${username}"'
                 sh 'this env "${pass}"'
                 echo "this is test case 1 "
-                retry(3){
-                   echo1 "this is test case 1 "
-                   }
-                 timeout(time: 30, unit: 'MILLISECONDS'){
-                  sh 'sleep 30'
-                 }
-}
+              }
             post{
                 always{
                     echo "========always========"
