@@ -14,14 +14,16 @@ pipeline{
     stages{
         stage("Test case A"){
             steps{
-                echo "this is the parameter ${params.sex}"
+                ech "this is the parameter ${params.sex}"
                 echo "${IsMale}"
                 echo "${lname}"
                 sh 'this env "${username}"'
                 sh 'this env "${pass}"'
-
-
                 echo "this is test case 1 "
+              options {
+                  timeout(time: 3, unit: 'SECONDS')
+                 retry(3)
+                   }
             }
             post{
                 always{
